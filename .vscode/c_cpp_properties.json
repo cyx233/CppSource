@@ -5,7 +5,9 @@
             "includePath": [
                 "/usr/include/**",
                 "/usr/local/include/**",
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "/usr/include/c++/8.2.1/**",
+                "/usr/include/linux"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",
