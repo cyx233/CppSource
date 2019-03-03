@@ -3,30 +3,43 @@
     "version": "2.0.0",
 
     "tasks": [
+        {
+            "label": "echo",
+            "type": "shell",
+            "command":"echo Hello"
+        },
 
         {
 
             "label": "Build with g++", // 任务名称，与launch.json的preLaunchTask相对应
 
             "type":"shell",
+            
+            "group": "build",
 
             "command": "g++", // 如果用MinGW，编译C用gcc，编译c++用g++
 
             "args": [
+                "-g",
 
                 "${file}",
 
+                "-std=c++11", // c++1z即c++17，C语言最新标准为c11，或根据自己的需要进行修改
+
+                "-Wall", // 开启额外警告\
+
                 "-o", // 指定输出文件名，不加该参数则默认输出a.exe
 
-                "${fileDirname}/${fileBasenameNoExtension}.out",
-
-                "-g", // 生成和调试有关的信息
-
-                "-Wall", // 开启额外警告
-
-                "-std=c++1z" // c++1z即c++17，C语言最新标准为c11，或根据自己的需要进行修改
+                "${fileDirname}/${fileBasenameNoExtension}",
 
             ], // 编译命令参数
+
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+            },
 
             "problemMatcher": {
 

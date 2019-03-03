@@ -9,22 +9,22 @@
             "name": "C++ GDB",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "miDebuggerPath": "/usr/bin/gdb",
             "MIMode": "gdb",
-            "externalConsole":false,
-            "preLaunchTask":"Build with g++",
+            "externalConsole":true,
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ]
+            ],
+            "preLaunchTask":"Build with g++",
         }
     ]
 }
