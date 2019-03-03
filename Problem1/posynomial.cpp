@@ -10,7 +10,7 @@ void posy(int argc, char*argv[])
     double sum = 0, x = 0;
     x = (double)atof(argv[argc-1]);
     if (x<1E-6) {
-        printf("Error,x = 0");
+        printf("Error,x = 0\n");
         return;
     }
     
@@ -21,7 +21,7 @@ void posy(int argc, char*argv[])
         sum += n/pow(x,i-1);
     }
     
-    printf("the value of posynomial is %lf",sum);
-    
+    printf("the value of posynomial is %.2lf",sum);
+
     return;
 }

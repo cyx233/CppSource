@@ -15,6 +15,6 @@ void poly(int argc, char*argv[])
         double n = (double)atof(argv[i]);
         sum += n * pow(x,i-1);
     }
-    printf("the value of polynomial is %lf",sum);
+    printf("the value of polynomial is %.2lf\n",sum);
     return;
 }
