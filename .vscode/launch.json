@@ -10,7 +10,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["1 2 2"],
+            "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -23,6 +23,7 @@
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
+                
             ]
         }
     ]
