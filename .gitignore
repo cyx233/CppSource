@@ -1,4 +1,5 @@
- *.out       # 忽略所有 .out 结尾的文件
+*.out      
+*.o # 忽略所有 .out,.o 结尾的文件
 /TODO     # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO
 build/    # 忽略 build/ 目录下的所有文件
 doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
