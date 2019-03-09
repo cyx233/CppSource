@@ -19,7 +19,7 @@ void Posy(int argc, char*argv[])
     
     for(int i = 2; i < argc-1; i++)
     {
-        double n = (double)atof(argv[i]);
+        double n = static_cast<double>(atof(argv[i]));
         sum += n/pow(x,i-1);
     }
     return;
