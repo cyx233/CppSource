@@ -1,4 +1,5 @@
-#include<stdio.h>
+#include<iostream>
+#include<cstdio>
 #include<cstdlib>
 #include<cmath>
 #include"func.h"
