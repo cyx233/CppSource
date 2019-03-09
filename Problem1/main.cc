@@ -1,5 +1,5 @@
 #include"func.h"
-#include<stdio.h>
+#include<cstdio>
 #include <time.h>
 
 namespace std{
