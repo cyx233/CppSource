@@ -1,6 +1,6 @@
 #include"func.h"
 #include<cstdio>
-#include <time.h>
+#include<time.h>
 
 namespace std{
   int main(int argc,char*argv[]){
@@ -9,7 +9,7 @@ namespace std{
     double posy_sum = NewPosy(argc,argv);
     
     
-    clock_t start, end;
+    __clock_t start, end;
 
     start = clock();
 
