@@ -5,8 +5,7 @@
 using namespace std;
 
 
-void posy(int argc, char*argv[])
-{
+double NewPosy(int argc, char*argv[]){
     double sum = 0, x = 0;
     x = (double)atof(argv[argc-1]);
     if (x<1E-6) {
@@ -14,14 +13,12 @@ void posy(int argc, char*argv[])
         return;
     }
     
-    sum = (double)atof(argv[1]);
-    for(int i = 2; i < argc-1; i++)
-    {
-        double n = (double)atof(argv[i]);
-        sum += n/pow(x,i-1);
+    sum = static_cast<double>atof(argv[argc-2])/x + static_cast<double>atof(argv[argc-3]);
+
+    for(int i = argc - 4; i >= 1; i--){
+        double n = static_cast<double>atof(argv[i]);
+        sum = n + sum/x;
     }
-    
-    printf("the value of posynomial is %.2lf",sum);
 
     return;
 }
