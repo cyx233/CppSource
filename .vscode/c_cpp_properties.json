@@ -10,6 +10,15 @@
                 "${workspaceFolder}",
                 "/usr/include/linux"
             ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "",
+                "path": [
+                    "/usr/include",
+                    "/usr/local/include",
+                    "${workspaceRoot}"
+                ]
+            },
             "defines": [],
             "compilerPath": "/usr/bin/g++",
             "cStandard": "c11",
