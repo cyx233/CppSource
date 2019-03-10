@@ -8,8 +8,22 @@
                 "${workspaceFolder}",
                 "${workspaceFolder}/**",
                 "/usr/include/linux",
+                "/usr/include/c++/8.2.1",
+                "/usr/include/c++/8.2.1/**"
+            ],
+            "browse": {
+              "path": [
+                "/usr/include",
+                "/usr/local/include",
+                "${workspaceFolder}",
+                "${workspaceFolder}/**",
+                "/usr/include/linux",
+                "/usr/include/c++/8.2.1",
                 "/usr/include/c++/8.2.1/tr1"
             ],
+              "limitSymbolsToIncludedHeaders": true,
+              "databaseFilename": ""
+            },
             "defines": [],
             "compilerPath": "/usr/bin/g++",
             "cStandard": "c11",
