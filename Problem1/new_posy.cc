@@ -2,8 +2,6 @@
 #include<cstdlib>
 #include<cmath>
 #include"func.h"
-using namespace std;
-
 
 double NewPosy(int argc, char*argv[]){
     double sum = 0, x = 0;

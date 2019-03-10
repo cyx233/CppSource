@@ -2,7 +2,6 @@
 #include<cstdlib>
 #include<cmath>
 #include"func.h"
-using namespace std;
 
 
 void Poly(int argc, char*argv[])

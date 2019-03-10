@@ -2,7 +2,6 @@
 #include<cstdlib>
 #include<cmath>
 #include"func.h"
-using namespace std;
 
 
 void Posy(int argc, char*argv[])
