@@ -16,6 +16,5 @@ double NewPosy(int argc, char*argv[]){
         double n = static_cast<double>(atof(argv[i]));
         sum = n + sum/x;
     }
-
     return sum;
 }
