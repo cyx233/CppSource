@@ -16,7 +16,7 @@
             "environment": [],
             "miDebuggerPath": "/usr/bin/gdb",
             "MIMode": "gdb",
-            "externalConsole":true,
+            "externalConsole":false,
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
