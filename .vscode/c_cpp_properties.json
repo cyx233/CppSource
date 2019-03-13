@@ -21,7 +21,7 @@
                 "/usr/include/c++/8.2.1/tr1"
             ],
               "limitSymbolsToIncludedHeaders": true,
-              "databaseFilename": ""
+              "databaseFilename": "" 
             },
             "defines": [],
             "compilerPath": "/usr/bin/g++",
