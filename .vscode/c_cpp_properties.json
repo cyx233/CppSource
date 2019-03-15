@@ -6,6 +6,7 @@
                 "/usr/include",
                 "/usr/local/include",
                 "${workspaceFolder}",
+                "${workspaceFolder}/**",
                 "/usr/include/linux",
                 "/usr/include/c++/8.2.1",
                 "/usr/include/c++/8.2.1/**"
