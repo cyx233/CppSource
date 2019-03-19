@@ -6,7 +6,6 @@
 
 #include"city.h"
 
-void Dijkstra(int i);
 
 int main(){  
   int n,m;
