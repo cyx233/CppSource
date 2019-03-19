@@ -29,8 +29,8 @@ int main(){
   int shortcut[200];
   for(int i=0; i<200; i++)
       shortcut[i] = 0x3f3f3f;
-
-
+      
+  double ans = 0xffffff;
   for(int no = 0; no < m; no++){
     int no1 = roads[no].node1;
     int no2 = roads[no].node2;
@@ -39,20 +39,21 @@ int main(){
     memset(exist,0,sizeof(exist));
     std::queue<Node>temp;
     temp.push(nodes[no1]);exist[no1] = true;
+    shortcut[no1] = 0;
     do{
       Node head = temp.front();
       temp.pop();
       exist[head.id] = false;
       for(int i=0; i < static_cast<int>(head.neighbor.size()); i++){
 
-        if( no1 == i && no2 == head.id)
+        if( no2 == head.neighbor[i] && head.id == no1)
           break;
-
-        if( no2 == i && no1 == head.id)
+        
+        if( no1 == head.neighbor[i] && head.id == no2)
           break;
-
+        
         if(shortcut[head.neighbor[i]] >
-            shortcut[head.id] + head.distance[i]){
+           shortcut[head.id] + head.distance[i]){
 
           shortcut[head.neighbor[i]] = 
             shortcut[head.id] + head.distance[i];
@@ -61,16 +62,59 @@ int main(){
             shortcut[head.id] + head.distance[i];
 
 
-          if(!exist[head.neighbor[i]])
-          {
+          if(!exist[head.neighbor[i]]){
             temp.push(nodes[head.neighbor[i]]);
             exist[head.neighbor[i]] = true;
           }
         } 
-      }
-      while(!temp.empty());
-
+      } while(!temp.empty());
+      
+    for(int i=0; i<n; i++){
+      if(roads[no].maxtime1 < shortcut[i])
+        roads[no].maxtime1 = shortcut[i];
     }
+    
+    memset(exist,0,sizeof(exist));
+    temp.push(nodes[no2]);exist[no2] = true;
+    shortcut[no2] = 0;
+    do{
+      Node head = temp.front();
+      temp.pop();
+      exist[head.id] = false;
+      for(int i=0; i < static_cast<int>(head.neighbor.size()); i++){
+
+        if( no2 == head.neighbor[i] && head.id == no1)
+          break;
+        
+        if( no1 == head.neighbor[i] && head.id == no2)
+          break;
+        
+        if(shortcut[head.neighbor[i]] >
+           shortcut[head.id] + head.distance[i]){
+
+          shortcut[head.neighbor[i]] = 
+            shortcut[head.id] + head.distance[i];
+
+          shortcut[head.neighbor[i]] = 
+            shortcut[head.id] + head.distance[i];
+
+
+          if(!exist[head.neighbor[i]]){
+            temp.push(nodes[head.neighbor[i]]);
+            exist[head.neighbor[i]] = true;
+          }
+        } 
+      } while(!temp.empty());
+      
+    for(int i=0; i<n; i++){
+      if(roads[no].maxtime2 < shortcut[i])
+        roads[no].maxtime2 = shortcut[i];
+    }
+    
+    if(ans > roads[no].Calculate())
+      ans = roads[no].Calculate();
   }
+  
+  printf("%g",ans);
   return 0;
 }
