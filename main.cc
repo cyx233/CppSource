@@ -66,7 +66,8 @@ int main(){
             exist[head.neighbor[i]] = true;
           }
         } 
-      } while(!temp.empty());
+      }
+    }while(!temp.empty());
       
     for(int i=0; i<n; i++){
       if(roads[no].maxtime1 < shortcut[i])
@@ -103,7 +104,8 @@ int main(){
             exist[head.neighbor[i]] = true;
           }
         } 
-      } while(!temp.empty());
+      }
+    }while(!temp.empty());
       
     for(int i=0; i<n; i++){
       if(roads[no].maxtime2 < shortcut[i])

@@ -5,7 +5,8 @@ class Road{
   int node1;
   int node2;
   int distance;
-  int ans;
+  int maxtime1;
+  int maxtime2;
   Road(int i, int j, int dis);  
   double Calculate(); 
 };
