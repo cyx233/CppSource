@@ -17,6 +17,7 @@
             "miDebuggerPath": "/usr/bin/gdb",
             "MIMode": "gdb",
             "externalConsole":false,
+            "preLaunchTask": "Build with g++",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

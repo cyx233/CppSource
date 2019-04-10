@@ -30,7 +30,7 @@
 
                 "-o", // 指定输出文件名，不加该参数则默认输出a.exe
 
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "${fileDirname}/${fileBasenameNoExtension}.out",
 
             ], // 编译命令参数
 
