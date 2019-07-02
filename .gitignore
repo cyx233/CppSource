@@ -3,7 +3,7 @@
 # Prerequisites
 *.d
 
-# Compiled Object files
+#Compiled Object files
 *.slo
 *.lo
 *.o
@@ -32,3 +32,24 @@
 *.exe
 *.out
 *.app
+
+# Program ignore
+src/*.d
+src/*.slo
+src/*.lo
+src/*.o
+src/*.obj
+src/*.gch
+src/*.pch
+src/*.so
+src/*.dylib
+src/*.dll
+src/*.mod
+src/*.smod
+src/*.lai
+src/*.la
+src/*.a
+src/*.lib
+src/*.exe
+src/*.out
+src/*.app

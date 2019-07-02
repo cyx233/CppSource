@@ -8,8 +8,7 @@
                 "${workspaceFolder}",
                 "${workspaceFolder}/**",
                 "/usr/include/linux",
-                "/usr/include/c++/8.2.1",
-                "/usr/include/c++/8.2.1/**"
+                "/usr/include/c++/8.3.0"
             ],
             "browse": {
               "path": [
@@ -18,8 +17,7 @@
                 "${workspaceFolder}",
                 "${workspaceFolder}/**",
                 "/usr/include/linux",
-                "/usr/include/c++/8.2.1",
-                "/usr/include/c++/8.2.1/tr1"
+                "/usr/include/c++/8.3.0"
             ],
               "limitSymbolsToIncludedHeaders": true,
               "databaseFilename": "" 
