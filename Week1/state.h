@@ -17,7 +17,7 @@ public:
     virtual void next()=0;
     virtual int getstate()=0;
     virtual ~State();
-    DMFB* dfmb;
+    DMFB* dmfb;
 };
 
 

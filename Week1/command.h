@@ -9,44 +9,59 @@ class Command
 {
 public:
     Command();
-    virtual void execute(DMFB* dmfb){};
+    virtual void execute(DMFB* dmfb);
     virtual ~Command();
 };
 
 class InputCommand: public Command{
 public:
-    InputCommand(){}
+    InputCommand(int x, int y):x1(x),y1(y){}
     void execute(DMFB* dmfb);
+    int x1,y1;
 };
 
 class MoveCommand: public Command{
 public:
-    MoveCommand(){}
+    MoveCommand(int a1,int b1,int a2,int b2):x1(a1),y1(b1),x2(a2),y2(b2){}
     void execute(DMFB* dmfb);
+    int x1,y1,x2,y2;
 };
 
 class SplitCommand: public Command{
 public:
-    SplitCommand(){}
+    SplitCommand(int a1, int b1, int a2, int b2, int a3, int b3):
+                x1(a1),y1(b1),x2(a2),y2(b2),x3(a3),y3(b3){}
     void execute(DMFB* dmfb);
+    int x1,y1,x2,y2,x3,y3;
 };
 
-class MixCommand: public Command{
+class SplitCommandFinish: public SplitCommand{
 public:
-    MixCommand(){}
+    SplitCommandFinish(int x1,int y1,int x2,int y2,int x3,int y3):SplitCommand (x1,y1,x2,y2,x3,y3){}
     void execute(DMFB* dmfb);
 };
 
 class MergeCommand: public Command{
 public:
-    MergeCommand();
+    MergeCommand(int a1, int b1, int a2, int b2, int a3, int b3):
+                x1(a1),y1(b1),x2(a2),y2(b2),x3(a3),y3(b3){}
+    void execute(DMFB* dmfb);
+    int x1,y1,x2,y2,x3,y3;
+};
+
+class MergeCommandFinish: public MergeCommand{
+public:
+    MergeCommandFinish(int x1,int y1,int x2,int y2,int x3,int y3):MergeCommand (x1,y1,x2,y2,x3,y3){}
     void execute(DMFB* dmfb);
 };
 
+
+
 class OutputCommand: public Command{
 public:
-    OutputCommand();
+    OutputCommand(int a1,int b1):x1(a1),y1(b1){}
     void execute(DMFB* dmfb);
+    int x1,y1;
 };
 
 #endif // COMMAND_H

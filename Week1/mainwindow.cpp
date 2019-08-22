@@ -66,7 +66,8 @@ void MainWindow::change_state(){
         break;
 
     case OUTPUT_STATE:
-        ui->stateButton->setEnabled(false);
+        if(dmfb->out_num == 1)
+            ui->stateButton->setEnabled(false);
         ui->stateLabel->setText(QString("Set Output"));
         break;
 
@@ -85,40 +86,33 @@ void MainWindow::change_state(){
 }
 
 void MainWindow::show_error(int kind){
-    enum{
-        TABLE_SMALL_ERROR = 0,
-        TABLE_BIG_ERROR,
-        TOO_MANY_INPUT,
-        FILE_NOT_FOUND
-    };
     switch(kind){
-    case TABLE_SMALL_ERROR:
+    case DMFB::TABLE_SMALL_ERROR:
         QMessageBox::warning(this,"Table Scale Error", "The chip is too small");
         dmfb->set_state(new StartState(dmfb));
-        update();
         break;
-    case TABLE_BIG_ERROR:
+    case DMFB::TABLE_BIG_ERROR:
         QMessageBox::warning(this,"Table Scale Error", "The chip is too big");
         dmfb->set_state(new StartState(dmfb));
-        update();
         break;
-    case TOO_MANY_INPUT:
+    case DMFB::TOO_MANY_INPUT:
         QMessageBox::warning(this,"Input Number Error", "There are too many inputs");
         dmfb->set_state(new StartState(dmfb));
-        update();
         break;
-    case FILE_NOT_FOUND:
-        QMessageBox::warning(this,"File Not Found", "There are too many inputs");
+    case DMFB::FILE_NOT_FOUND:
+        QMessageBox::warning(this,"File Not Found", "There is not such a file");
         dmfb->set_state(new StartState(dmfb));
-        update();
         break;
-
+    case DMFB::COMMAND_ERROR:
+        QMessageBox::warning(this,"Command Error", "Wrong command in file");
+        dmfb->set_state(new StartState(dmfb));
+        break;
     default:
         break;
     }
     dmfb->row=-1;
     dmfb->col=-1;
-    this->update();
+    update();
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event){
@@ -156,31 +150,31 @@ void MainWindow::set_tunnel(QMouseEvent* event){
         return;
 
     if(dmfb->get_state() == INPUT_STATE){
-        if(dmfb->table[x][y].type == dmfb->NOTHING){
+        if(dmfb->table[x][y].type == DMFB::NOTHING){
             if(dmfb->in_num==0)
                 return;
-            dmfb->table[x][y].type = dmfb->INPUT;
+            dmfb->table[x][y].type = DMFB::INPUT;
             dmfb->in_num--;
             if(dmfb->in_num==0)
                 ui->stateButton->setEnabled(true);
         }
-        else if(dmfb->table[x][y].type == dmfb->INPUT){
+        else if(dmfb->table[x][y].type == DMFB::INPUT){
             ui->stateButton->setEnabled(false);
-            dmfb->table[x][y].type = dmfb->NOTHING;
+            dmfb->table[x][y].type = DMFB::NOTHING;
             dmfb->in_num++;
         }
     }
     else if(dmfb->get_state() == OUTPUT_STATE){
-        if(dmfb->table[x][y].type == dmfb->NOTHING){
+        if(dmfb->table[x][y].type == DMFB::NOTHING){
             if(dmfb->out_num==0)
                 return;
-            dmfb->table[x][y].type = dmfb->OUTPUT;
+            dmfb->table[x][y].type = DMFB::OUTPUT;
             dmfb->out_num = 0;
             ui->stateButton->setEnabled(true);
         }
-        else if(dmfb->table[x][y].type == dmfb->OUTPUT){
+        else if(dmfb->table[x][y].type == DMFB::OUTPUT){
             ui->stateButton->setEnabled(false);
-            dmfb->table[x][y].type = dmfb->NOTHING;
+            dmfb->table[x][y].type = DMFB::NOTHING;
             dmfb->out_num = 1;
         }
     }
@@ -304,6 +298,7 @@ void MainWindow::on_stateButton_clicked()
         break;
     case OUTPUT_STATE:
         go_to_next();
+        dmfb->copy = dmfb->table;
         break;
     case MAIN_STATE:
         on_actionStart_triggered();

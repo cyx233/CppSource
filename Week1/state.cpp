@@ -1,21 +1,20 @@
 #include "state.h"
 
-State::State(DMFB* a):dfmb(a){}
+State::State(DMFB* a):dmfb(a){}
 State::~State(){}
 
 void StartState::next(){
-    dfmb->set_state(new SetInputState(dfmb));
+    dmfb->set_state(new SetInputState(dmfb));
 }
 
 void SetInputState::next(){
-    dfmb->set_state(new SetOutputState(dfmb));
+    dmfb->set_state(new SetOutputState(dmfb));
 }
 
 void SetOutputState::next(){
-    dfmb->set_state(new MainState(dfmb));
-    dfmb->copy = dfmb->table;
+    dmfb->set_state(new MainState(dmfb));
 }
 
 void MainState::next(){
-    dfmb->set_state(new StartState(dfmb));
+    dmfb->set_state(new StartState(dmfb));
 }

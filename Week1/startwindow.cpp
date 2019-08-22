@@ -34,7 +34,7 @@ void StartWindow::on_pushButton_3_clicked()
                 this,
                 "Open Document",
                 QDir::currentPath(),
-                "All fills(*.*);;Documentfiles(*.doc *.rtf");
+                "All fills(*.*)");
     if(!file.isNull()){
         ui->lineEdit->setText(file);
     }
