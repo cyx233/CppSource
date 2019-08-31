@@ -576,6 +576,7 @@ void MainWindow::draw(bool sent){
     QMessageBox::information(this, "Game over", "Draw");
     if(sent)
         socket_Write_Data(QString("Stalemate"));
+    ui->lcdNumber->display(60);
     timer->stop();
 }
 
@@ -606,14 +607,33 @@ bool MainWindow::draw_check(){
         return false;
     if(check(king_x,king_y,op))
         return false;
+
+    Item copy[9][9];
+    for(int i=1;i<=8;i++)
+        for(int j=1;j<=8;j++){
+            copy[i][j] = table[i][j];
+        }
+
     for(int i=1;i<=8;i++)
         for(int j=1;j<=8;j++){
             if(player[i][j] == op){
                 if(table[i][j].type!=BK && table[i][j].type!=WK){
                     for(int m=1;m<=8;m++)
                         for(int n=1;n<=8;n++){
-                            if(move_check(i,j,m,n,table[i][j].type))
-                                return false;
+                            if(i==m && j==n){
+
+                            }
+                            else if(move_check(i,j,m,n,table[i][j].type)){
+                                int flag=0;
+                                table[m][n].type = table[i][j].type;
+                                table[i][j].type = NOTHING;
+                                if(!check(king_x,king_y,op))
+                                    flag=1;
+                                table[m][n] = copy[m][n];
+                                table[i][j] = copy[i][j];
+                                if(flag)
+                                    return false;
+                            }
                         }
                 }
             }
@@ -621,12 +641,20 @@ bool MainWindow::draw_check(){
     for(int i=1;i<=8;i++)
         for(int j=1;j<=8;j++){
             if(i==king_x && j==king_y){
-
             }
             else if(i-king_x<=1 && i-king_x>=-1 && j-king_y<=1 && j-king_y>=-1){
-                if(move_check(king_x,king_y,i,j,table[king_x][king_y].type) &&
-                   !check(i,j,op)){
-                    return false;
+                if(move_check(king_x,king_y,i,j,table[king_x][king_y].type)){
+                    int flag=0;
+                    table[i][j].type=table[king_x][king_y].type;
+                    table[king_x][king_y].type=NOTHING;
+                    if(!check(i,j,op)){
+                        flag=1;
+                    }
+                    table[i][j].type = copy[i][j].type;
+                    table[king_x][king_y] = copy[king_x][king_y];
+                    if(flag){
+                        return false;
+                    }
                 }
             }
         }
@@ -699,7 +727,7 @@ void MainWindow::on_LongCastlingButton_clicked(){
     if(now_player == 1){
         if(table[1][1].type!=BR || table[5][1].type!=BK)
             return;
-        for(int i=1;i<=5;i++){
+        for(int i=3;i<=5;i++){
             if(check(i,1,color) || !move_check(1,1,4,1,BR))
                 return;
         }
@@ -714,7 +742,7 @@ void MainWindow::on_LongCastlingButton_clicked(){
     else if(now_player == 0){
         if(table[1][8].type!=WR || table[5][8].type!=WK)
             return;
-        for(int i=1;i<=5;i++){
+        for(int i=3;i<=5;i++){
             if(check(i,8,color) || !move_check(1,8,4,8,WR))
                 return;
         }
@@ -894,7 +922,7 @@ void MainWindow::input_translate(QString info){
             }
         }
         else if(command.size()==3){
-            int y = 8;
+            int y = 1;
             int x = 3;
             int xR = 1;
             int x2 = 4;
@@ -919,11 +947,11 @@ void MainWindow::input_translate(QString info){
             change_now_player();
         }
         else if(command.size() >= 4){
-            x1 = command[2].toStdString()[0] - 'A' + 1;
+            x1 = command[2].toStdString()[0] - 'a' + 1;
             y1 = command[2].toStdString()[1] - '0';
             y1 = 9 - y1;
 
-            x2 = command[3].toStdString()[0] - 'A' + 1;
+            x2 = command[3].toStdString()[0] - 'a' + 1;
             y2 = command[3].toStdString()[1] - '0';
             y2 = 9 - y2;
 
@@ -957,6 +985,22 @@ void MainWindow::input_translate(QString info){
             }
 
             if(move_check(x1,y1,x2,y2,type)){
+                if(table[x2][y2].type==BR && now_player==0){
+                    if(x2==1 && y2==1){
+                        ui->LongCastlingButton->setEnabled(false);
+                    }
+                    else if(x2==8 && y2==1){
+                        ui->ShortCastlingButton->setEnabled(false);
+                    }
+                }
+                else if(table[x2][y2].type==WR && now_player==1){
+                    if(x2==1 && y2==8){
+                        ui->LongCastlingButton->setEnabled(false);
+                    }
+                    else if(x2==8 && y2==8){
+                        ui->ShortCastlingButton->setEnabled(false);
+                    }
+                }
                 table[x1][y1].type = NOTHING;
                 table[x2][y2].type = type;
             }
@@ -1019,10 +1063,10 @@ void MainWindow::output_translate(int type, int x1, int y1, int x2, int y2, int 
         break;
     }
 
-    char a1 = (char)('A'+x1-1);
+    char a1 = (char)('a'+x1-1);
     command += a1 + QString::number(9-y1) + " ";
 
-    char a2 = (char)('A'+x2-1);
+    char a2 = (char)('a'+x2-1);
     command += a2 + QString::number(9-y2) + " ";
 
     if(pro>=1){
