@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE HTML> 
+<html lang="en" ng-app="indexApp">
+<head>
+    <meta charset="UTF-8">
+    <title>NBA News Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+</head>
+<body grey lighten-3>
+    <div class="container">
+        <form name="searchForm", action="/SearchSite/">
+            <div class="input-field">
+                <div class="row">
+                    <input type="text" name="keywords" class="col s8 offset-s1">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn waves-effect waves-light" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
