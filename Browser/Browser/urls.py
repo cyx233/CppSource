@@ -19,6 +19,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('SearchSite/', include('SearchSite.urls')),
     path('', views.index, name='index'),
+    path('SearchSite/', include('SearchSite.urls')),
+    path('TeamRank/', include('TeamRank.urls')),
 ]

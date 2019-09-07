@@ -2,7 +2,24 @@ import requests
 import re
 import pickle
 
-import crawler_head
+
+class New:
+    def __init__(self, key_word, title, image_link, source, postTime, content, link, source_link):
+        self.key_word = key_word
+        self.title = title
+        self.image_link = image_link
+        self.source = source
+        self.postTime = postTime
+        self.content = content
+        self.link = link
+        self.source_link = source_link
+
+    def __str__(self):
+        return str(self.__dict__)
+
+    def __repr__(self):
+        return str(self.__dict__)
+
 
 web = set()
 news = set()

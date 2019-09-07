@@ -1,97 +1,61 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
 <head>
-<title>NBA 新闻与资讯</title>
-<meta name="keywords" content="NBA" />
-<meta http-equiv="Content-Language" content="zh-CN">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta charset="UTF-8">
+  <title>球队热度榜</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-<!--channel_nav -->
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href='/'\ 
+        class="brand-logo">THU</a>
+      <!--ul class="right hide-on-med-and-down">
+        <li><a href="">Navbar Link</a></li>
+      </ul-->
 
-<div class="banner-area"  name="top" id="top"></div>
-<div class="nav-con">
-    <ul class="nav">
-        <li><a href="/" id="nav_live">首页</a></li>
-        <li><a href="/schedule/" id="nav_schedule">新闻资讯</a></li>
-        <li>
-            <div id="teamcon"><a href="/team/" class="arr" id="nav_team">球队</a>
-                <div class="moreinfo-con" id="teamdetail">
-                    <div class="l-con">
-                        <h2 class="lh2">东部球队</h2>
-                        <span class="blank3"></span>
-                        <dl>
-                            <dd>
-                                <h2><a class="fB">大西洋分区</a></h2>
-                            </dd>
-                            <dd><a href="/team/1000000009/">波士顿凯尔特人</a></dd>
-                            <dd><a href="/team/1000000006/">纽约尼克斯</a></dd>
-                            <dd><a href="/team/1000000007/">费城76人</a></dd>
-                            <dd><a href="/team/1000000010/">多伦多猛龙</a></dd>
-                            <dd><a href="/team/1000000008/">布鲁克林篮网</a></dd>
-                        </dl>
-                        <span class="blank3"></span>
-                        <dl>
-                            <dd>
-                                <h2><a class="fB">中部分区</a></h2>
-                            </dd>
-                            <dd><a href="/team/1000000011/">芝加哥公牛</a></dd>
-                            <dd><a href="/team/1000000013/">印第安纳步行者</a></dd>
-                            <dd><a href="/team/1000000015/">密尔沃基雄鹿</a></dd>
-                            <dd><a href="/team/1000000014/">底特律活塞</a></dd>
-                            <dd><a href="/team/1000000012/">克里夫兰骑士</a></dd>
-                        </dl>
-                        <span class="blank3"></span>
-                        <dl>
-                            <dd>
-                                <h2><a class="fB">东南分区</a></h2>
-                            </dd>
-                            <dd><a href="/team/1000000004/">迈阿密热火</a></dd>
-                            <dd><a href="/team/1000000005/">奥兰多魔术</a></dd>
-                            <dd><a href="/team/1000000003/">亚特兰大老鹰</a></dd>
-                            <dd><a href="/team/1000000002/">夏洛特黄蜂</a></dd>
-                            <dd><a href="/team/1000000001/">华盛顿奇才</a></dd>
-                        </dl>
-                    </div>
-                    <!--left end-->
-                    <div class="l-con">
-                        <h2 class="lh2 rh2">西部球队</h2>
-                        <span class="blank3"></span>
-                        <dl>
-                            <dd>
-                                <h2><a class="fB">西南分区</a></h2>
-                            </dd>
-                            <dd><a href="/team/1000000024/">圣安东尼奥马刺</a></dd>
-                            <dd><a href="/team/1000000025/">达拉斯独行侠</a></dd>
-                            <dd><a href="/team/1000000023/">新奥尔良鹈鹕</a></dd>
-                            <dd><a href="/team/1000000022/">休斯敦火箭</a></dd>
-                            <dd><a href="/team/1000000021/">孟菲斯灰熊</a></dd>
-                        </dl>
-                        <span class="blank3"></span>
-                        <dl>
-                            <dd>
-                                <h2><a class="fB">西北分区</a></h2>
-                            </dd>
-                            <dd><a href="/team/1000000017/">犹他爵士</a></dd>
-                            <dd><a href="/team/1000000018/">俄克拉荷马雷霆</a></dd>
-                            <dd><a href="/team/1000000020/">丹佛掘金</a></dd>
-                            <dd><a href="/team/1000000019/">波特兰开拓者</a></dd>
-                            <dd><a href="/team/1000000016/">明尼苏达森林狼</a></dd>
-                        </dl>
-                        <span class="blank3"></span>
-                        <dl>
-                            <dd>
-                                <h2><a class="fB">太平洋分区</a></h2>
-                            </dd>
-                            <dd><a href="/team/1000000027/">洛杉矶湖人</a></dd>
-                            <dd><a href="/team/1000000029/">菲尼克斯太阳</a></dd>
-                            <dd><a href="/team/1000000026/">金州勇士</a></dd>
-                            <dd><a href="/team/1000000028/">洛杉矶快船</a></dd>
-                            <dd><a href="/team/1000000030/">萨克拉门托国王</a></dd>
-                        </dl>
-                    </div>
-                    <!--left end--></div>
-                <!--moreinfo end--></div>
-        </li>
-    </ul>
-</div>
+      <!--ul id="nav-mobile" class="sidenav">
+        <li><a href="">Navbar Link</a></li>
+      </ul-->
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <h2 class="header center red-text"><b><B><I>球队热度榜</I></B></b></h2>
+    <div class="section">
+      <div class="center">
+        <div class="row">
+          {% for team in teams %}
+            <div class="col s3">
+              <a href="TeamSite/{{team.id}}"><img src="{{team.image}}" width=58%, height=60%></a><br>
+              <B>热度：{{team.rank}}<br><a href="TeamSite/{{team.id}}">{{team.chName}}{{team.enName}}</a></B>
+            </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+    <br><br>
+  </div>
+
+  <footer class="page-footer orange">
+      <div class="container">
+      Made by Materialize
+      </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/static/js/materialize.js"></script>
+  <script src="/static/js/init.js"></script>
+
+  </body>
+</html>
 
