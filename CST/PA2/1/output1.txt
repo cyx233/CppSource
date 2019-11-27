@@ -1,0 +1,10 @@
+        put_data = JSONParser().parse(request)
+        paper = self.get_object(paper_id)
+        if "change_status" in put_data:
+            new_status = put_data["change_status"]
+            if not new_status == "public" and not new_status == "drafted":
+                return Response("Error: status should be \"public\" or \"drafted\"")
+            paper.status = new_status
+            paper.save()
+            return Response(PaperList.create_response_from_paper(paper))
+ 
